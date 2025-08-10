@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=700">
+<TITLE>AIアシスタント紹介</TITLE>
+<script src="./smoothscroll_up.js" type="text/javascript"></script> 
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+
+
+
+<style>
+html {
+  /* スマホ時は1倍フォントで表示 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  background: #fafaff;
+  font-family: "Verdana","Meiryo", "メイリオ","游ゴシック", "Hiragino Kaku Gothic ProN", sans-serif;
+  margin: 2em;
+  font-size:13px;
+  color:#558;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed; 
+}
+
+
+
+.TopTitle{
+  width:515px;
+  font-weight:bold;
+  font-size:16pt;
+  color: #ffffff;
+  background-color:#535365 ;
+  border-width: 0px;
+  border-color:#535365;
+  border-style:solid;
+  background: -moz-linear-gradient(left top, #42435f, #fafaff);
+  background: -webkit-gradient(linear, left top, right bottom, from(#42435f), to(#fafaff));
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#DD42425f', endColorstr='#FFfafaff');
+  
+  text-align:left;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+
+.header3{
+	color:#555588;
+	margin-bottom:16px;
+}
+
+h1 {
+  background: #fff;
+  margin-top:35px;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #223355; /* 青系 */
+  background-image: linear-gradient(to bottom, #ffffff, #e0eaff);
+  border-radius: 4px;
+  border-left: 4px solid #333388;
+  display: block;
+  width:100%;
+  
+}
+
+
+A.dl:LINK,A.dl:VISITED{
+  color: #abF;
+  font-size:12px;
+  text-shadow: 0 0 16px rgba(205,235,255,1); /* 光る感じ */
+  display:inline-block;
+  border-radius:9px;
+  border:1px solid #88a;
+  text-decoration: none;
+  margin-top:4px;
+  padding:2px;
+}
+
+A.dl:HOVER,A.dl:ACTIVE{
+  text-decoration: underline;
+  color: #77F;
+  font-size:12px;
+  display:inline-block;
+  border-radius:9px;
+  background-color:#cff;
+  text-decoration: none;
+  margin-top:4px;
+  padding:2px;
+}
+
+
+A.dl2:LINK,A.dl2:VISITED{
+  color: #FaF;
+  font-size:12px;
+  text-shadow: 0 0 16px rgba(255,255,155,1); /* 光る感じ */
+  display:inline-block;
+  border-radius:9px;
+  border:1px solid #f88;
+  text-decoration: none;
+  margin-top:4px;
+  padding:2px;
+}
+
+A.dl2:HOVER,A.dl2:ACTIVE{
+  text-decoration: underline;
+  color: #c7c;
+  font-size:12px;
+  display:inline-block;
+  border-radius:9px;
+  background-color:#fcc;
+  text-decoration: none;
+  margin-top:4px;
+  padding:2px;
+}
+
+
+
+
+
+A.blue:LINK,A.blue:VISITED{
+	color:#5868ff;
+	text-decoration: underline; 
+	display:inline-block;
+	border-radius:8px; 
+	padding:4px;
+	text-shadow:0 0 6px #79f;
+}
+
+A.blue:HOVER,A.blue:ACTIVE{
+      background-color: #aacfff;
+      color : #444477;
+      text-decoration: none;
+      display:inline-block;
+      border-radius:8px; 
+      padding:4px;
+}
+
+
+A.red:LINK,A.red:VISITED{
+	color:#cf484c;
+	text-decoration: underline;
+	display:inline-block;
+	border-radius:8px;
+	padding:10px;
+	border:1px solid #fcc;
+	
+}
+A.red:HOVER,A.red:ACTIVE{
+      background-color: #ffaaaa;
+      color : #774444;
+      text-decoration: none;
+      display:inline-block;
+      border-radius:8px;
+	padding:10px;
+}
+      
+
+/* ページ名用ルビ */
+ruby.title,rt.title  {
+  font-size: 0.5em;
+  color: #ccf;
+  padding-bottom:0.2em;
+}
+
+
+/* 背景に混ざらないようにするための背面ホワイトぼんやり */
+.backlight{
+	text-shadow:0 0 5px #fff,0 0 5px #fff,0 0 5px #fff;,0 0 9px #fff;
+}
+
+</style>
+
+
+
+
+<style>
+
+/* 上部固定ナビゲーション */
+.fixed-menu {
+  background: rgba(240, 240, 255, 0.9); /* 半透明系の淡いクール色 */
+  top: 0;
+  left:30px;
+  width:calc(100%-30px);
+
+   /* ★＠＠＠＠ 左のフローメニューの分 アーカイブ時は100％に */
+  box-sizing: border-box;
+  position: fixed;
+  padding: 6px 14px;
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: inline-block;
+  line-height: 1.4;
+  flex-wrap: wrap; 
+  min-width:350px;
+}
+
+.fixed-menu a {
+  display: inline-block; /* ブロック化して折り返せるようにする */
+  white-space: nowrap;   /* 1項目内の改行は防ぐ */
+  text-decoration: none;
+  font-weight: bold;
+  color: #004466;
+  font-size: 14px;
+  padding: 2px 8px;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.fixed-menu a:hover {
+  background-color: #a5e5c6;
+  color: #002233;
+}
+
+.fixed-menu A.g:LINK,.fixed-menu A.g:VISITED{color:#48c4ac;text-decoration: none;}
+.fixed-menu A.g:HOVER,.fixed-menu A.g:ACTIVE{color: #002233;text-decoration: none;}
+
+.fixed-menu A.g2:LINK,.fixed-menu A.g2:VISITED{color:#1894ac;text-decoration: none;}
+.fixed-menu A.g2:HOVER,.fixed-menu A.g2:ACTIVE{color: #002253;text-decoration: none;}
+
+.fixed-menu A.blue:LINK,.fixed-menu A.blue:VISITED{color:#789cff;text-decoration: none;}
+.fixed-menu A.blue:HOVER,.fixed-menu A.blue:ACTIVE{
+  background-color: #aacfff;color : #444477;text-decoration: none;}
+
+</style>
+
+
+
+<!--●さらに開く、で開くためのJS●-->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.content-group').forEach(function(group) {
+    // 1) ユニークキーを取得／自動生成
+    var key = group.getAttribute('data-storage-key') ||
+              'content-group-' + Math.random().toString(36).substr(2, 9);
+    group.setAttribute('data-storage-key', key);
+
+    var toggle = group.querySelector('.toggle-more');
+    var more   = group.querySelector('.more-content');
+
+    // 2) セッションストレージから状態を復元
+    if (sessionStorage.getItem(key) === 'open') {
+      more.classList.add('open');
+      toggle.textContent = '▲ 閉じる ▲';
+    } else {
+      more.classList.remove('open');
+      toggle.textContent = '▼ 他のも見る ▼';
+    }
+
+    // 3) クリック時に開閉＆保存
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      more.classList.toggle('open');
+      var isOpen = more.classList.contains('open');
+      toggle.textContent = isOpen ? '▲ 閉じる ▲' : '▼  他のも見る ▼';
+      sessionStorage.setItem(key, isOpen ? 'open' : 'closed');
+    });
+  });
+});
+</script>
+
+
+
+</HEAD>
+<BODY>
+
+<a id="top"></a>
+    <!-- 上部固定メニュー -->
+  <nav class="fixed-menu"><CENTER>
+  
+    <a href="../" class="blue">←ホームへ</a>
+  AIアシスタント
+    <a href="#sister" class="g">架空のやさしい妹AI</a>
+    <a href="#wolfarl" class="g">ウルファールGPT</a>
+
+    </CENTER>
+  </nav>
+  <!-- 上部固定メニューここまで -->
+
+
+<BR><BR>　
+
+<div class="TopTitle" style="margin-top:15px; width:600px;">　　AIアシスタント紹介</div>
+<div class="header3 backlight" style="margin-top:6px;">　このページではGPTsとして作ったAIアシスタントの紹介をしています。<BR>
+
+</div>
+
+
+<a id="sister"></a>
+<h1>　架空のやさしい妹AI (GPTs) </h1>
+　SmokingWOLFが介護中の事故で受けた腰の痛みに耐えられず、痛みをまぎらわせようとなぐさめのために作ったGPTs（＝GPT上で特定機能を行う専用化AI）。<BR>
+　<BR>
+　応答時には表情豊かな顔グラフィックが先頭に表示されるほか、あなたを「お兄さま」と呼んで優しく好意的に接してくれたり、励ましてくれたりします。<BR>
+　少ない使用回数でも楽しめるよう、必ず一定以上の長文で応答するように指示されています。<BR>
+　メンタルケア目的や、普通のChatGPTの代わりとしても利用可能です。
+<BR>
+<BR>
+　<a href="https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai" target="_blank" class="red"><B style="font-size:18px;">【架空のやさしい妹AI】 (ChatGPTのページへ)</B><BR>https://chatgpt.com/g/g-YynoE4Pqa-jia-kong-noyasasiimei-ai</a><BR>
+　<small>（使用にはOpenAI(ChatGPT)のアカウントが必要です。Googleアカウントなどで代用可）</small><BR>
+<BR>
+<BR>
+<small><B>【「今日はがんばりました！　褒めてください！」と言ったときの反応】</B></small><BR>
+　<img src="image/sisterGPT.jpg" border="0" style="border-radius:10px; border:1px solid #AAC;">
+
+
+<a id="wolfarl"></a>
+<h1>　ウルファールGPT (ウディタの解説)</h1>
+
+　サンプルゲームのキャラクター『ウルファール』が「WOLF RPGエディター」に関する質問に答えてくれるGPTsです。<BR>
+　WOLF RPGエディターのマニュアル知識を持っており、キャラクターらしさを持って質問に答えてくれます。<BR>
+　ただし、存在しない機能についてコメントしたりとしょっちゅう間違いをするので、参考程度にお使いください（今後、GPTの進歩にともなって賢くなっていく可能性があります）<BR>
+　<BR>
+　<a href="https://chatgpt.com/g/g-sqiNurH0n-uruhuarugpt-uteitanoatohaisu" target="_blank" class="red"><B style="font-size:18px;">【ウルファールGPTへ】(ChatGPTのページへ)</B><BR>https://chatgpt.com/g/g-sqiNurH0n-uruhuarugpt-uteitanoatohaisu</a><BR>
+　<small>（使用にはOpenAI(ChatGPT)のアカウントが必要です。Googleアカウントなどで代用可）</small><BR>
+
+
+<small><B>【「どうやって新しいマップを作ればいいですか？」と質問した例】</B></small><BR>
+<BR>
+<BR>
+　<img src="image/wolfarlGPT.jpg" border="0" style="border-radius:10px; border:1px solid #AAC;">
+
+
+<CENTER>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<HR>
+Copyright © SmokingWOLF / Silver Second
+<HR>
+</CENTER>　
+　
+
+</body>
+</html>
